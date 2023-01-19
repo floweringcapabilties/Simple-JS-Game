@@ -3,7 +3,7 @@
 
 const number = Math.trunc(Math.random() * 20) + 1;
 document.querySelector('.number').textContent = number;
-let score = 20;
+let score = 3;
 
 
 document.querySelector('.check').addEventListener('click', function(){
@@ -14,13 +14,26 @@ document.querySelector('.check').addEventListener('click', function(){
 	}else if (guess === number){
 		document.querySelector('.message').textContent = 'Correct';
 	}else if(guess > number){
-		document.querySelector('.message').textContent = 'Number is too high';
-		score --;
-		document.querySelector('.score').textContent = score;
+		if(score > 1){
+			document.querySelector('.message').textContent = 'Number is too high';
+			score --;
+			document.querySelector('.score').textContent = score;
+		}else{
+			score --;
+			document.querySelector('.score').textContent = score;
+			document.querySelector('.message').textContent = 'You Lose';
+		}
+	
 	}else if(guess < number){
-		document.querySelector('.message').textContent = 'Number is too low';
-		score --;
-		document.querySelector('.score').textContent = score;
+		if(score > 1){
+			document.querySelector('.message').textContent = 'Number is too high';
+			score --;
+			document.querySelector('.score').textContent = score;
+		}else{
+			score --;
+			document.querySelector('.score').textContent = score;
+			document.querySelector('.message').textContent = 'You Lose';
+		}
 	}
 
 })
