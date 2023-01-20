@@ -4,6 +4,8 @@
 let number = Math.trunc(Math.random() * 20) + 1;
 document.querySelector('.number').textContent = '?';
 let score = 20;
+let highScore = 0;
+
 
 
 function getMessage(mssg){
@@ -18,16 +20,24 @@ function playAgain(){
 	document.querySelector('.number').textContent = '?';
 	document.querySelector('body').style.backgroundColor = '#222';
 	document.querySelector('.guess').value = '';
+	document.querySelector('.number').style.width = '15rem';
 	getMessage('Start guessing...');
 	getScore(score);
 }
+
 
 document.querySelector('.check').addEventListener('click', function(){
 	const guess = Number (document.querySelector('.guess').value);
 	if(!guess){
 		getMessage('no number!');
 	}else if (guess === number){
+		if(score > highScore){
+			highScore = score;
+			document.querySelector('.highscore').textContent = highScore;
+		}
+		
 		getMessage('Correct');
+	
 		document.querySelector('.number').textContent = number;
 		document.querySelector('body').style.backgroundColor = '#60b347';
 		document.querySelector('.number').style.width = '30rem';
