@@ -5,7 +5,7 @@ let number = Math.trunc(Math.random() * 20) + 1;
 document.querySelector('.number').textContent = '?';
 let score = 20;
 let highScore = 0;
-
+let numTxt = document.querySelector('.number');
 
 
 function getMessage(mssg){
@@ -17,10 +17,10 @@ function getScore(x){
 function playAgain(){
 	number = Math.trunc(Math.random() * 20) + 1;
 	score = 20;
-	document.querySelector('.number').textContent = '?';
+	numTxt.textContent = '?';
 	document.querySelector('body').style.backgroundColor = '#222';
 	document.querySelector('.guess').value = '';
-	document.querySelector('.number').style.width = '15rem';
+	numTxt.style.width = '15rem';
 	getMessage('Start guessing...');
 	getScore(score);
 }
@@ -38,9 +38,9 @@ document.querySelector('.check').addEventListener('click', function(){
 		
 		getMessage('Correct');
 	
-		document.querySelector('.number').textContent = number;
+		numTxt.textContent = number;
 		document.querySelector('body').style.backgroundColor = '#60b347';
-		document.querySelector('.number').style.width = '30rem';
+		numTxt.style.width = '30rem';
 	}
  
 	if(guess > number && score >= 1){
@@ -54,7 +54,7 @@ document.querySelector('.check').addEventListener('click', function(){
 	}
 
 	if(score == 0){
-		document.querySelector('.number').textContent = number;
+		numTxt.textContent = number;
 		getMessage('You Lose');
 	}
 
